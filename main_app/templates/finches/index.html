@@ -1,5 +1,43 @@
 {% extends 'base.html' %}
 {% block content %}
     <h1>All Finches</h1>
-    <hr>
+
+   {% for finch in finches %}
+    <div class="card">
+        <a href="{% url 'detail' finch.id %}">
+            <div class="card-content">
+                <span class="card-title">{{ finch.name }}</span>
+                 <img src="https://pixabay.com/get/g3d1c60b1f0b287cac5b999dd690b526a804cdba5b85ac08206278ed7ce1f873c79cd4e7f5f952ce63b4792ba75ddcb76_640.jpg">
+                <p>Species: {{ finch.species }}</p>
+                <p>Description: {{ finch.description }}</p>
+                <p>Age: {{ finch.age }}</p>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+    
 {% endblock %}
+
+    {% comment %} <div class="card-container">
+        {% for finch in finches %}
+        <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="https://pixabay.com/get/g3d1c60b1f0b287cac5b999dd690b526a804cdba5b85ac08206278ed7ce1f873c79cd4e7f5f952ce63b4792ba75ddcb76_640.jpg">
+            </div>
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">{{ finch.name }}<i class="material-icons right">info</i></span>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">{{ finch.name }}<i class="material-icons right">close</i></span>
+                <p>Species: {{ finch.species }}</p>
+                <p>Description: {{ finch.description }}</p>
+                <p>Age: {{ finch.age }}</p>   
+                <div class="card-action">
+                    <a href="{% url 'finch_update' finch.id %}">Edit</a>
+                    <a href="{% url 'finch_delete' finch.id %}">Delete</a>
+                </div>     
+            </div>
+        </div>
+        {% endfor %}
+    </div>   
+        {% endblock %} {% endcomment %}
